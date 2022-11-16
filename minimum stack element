@@ -1,0 +1,43 @@
+
+
+------------------------------------------------------------------------------------------------------
+vector< pair<int,int> > s;
+	
+    Min_Stack() { 
+    }
+    
+    void push(int val) {
+        if(s.empty())                            //if stack is empty then val is inserted 
+            s.push_back({val,val});
+        else
+            s.push_back({val,min(s.back().second,val)});      //if stack is not empty then in first value we insert that val and in second value we inserted min so far
+    }
+    
+    void pop() {
+    s.pop_back();
+    }
+    
+    int top() {
+    return s.back().first;
+    }
+    
+    int getMin() { 
+    return s.back().second;
+    }
+  ----------------------------------------------------------------------------------------------------  
+    
+  Time complexity O(1)
+  Space complexity O(N)
+  
+  
+  
+  
+  APPROACH:-
+  
+  Here I am using Stack of Pair of Int. The first value of the pair would store the element of the normal stack 
+  and the second value would store the minimum up to that point in the stack.
+  So even if the minimum element of the stack is removed from the top, we still have a backup of the next minimum element in the pair. 
+  So for every element pushed in the stack, it stores its corresponding minimum value.
+  
+  
+  
