@@ -1,0 +1,140 @@
+DELETE the kth element from the last 
+
+suppose ex-:  1->2->3->4->5->6     K=3
+i have to delete 3rd element from the end in this linked list
+
+
+
+------------------------------------------------------------------------------
+  ListNode* removeNthFromEnd(ListNode* head, int n) {
+        int count=0;
+        ListNode* temp=head;
+        while(temp!=NULL)
+        {
+            temp=temp->next;
+            count++;
+        }
+        
+        if(count==n)return head->next;             // when we have to delete the first node
+      
+        int k=count-n;
+        temp=head;
+        count=1;
+        while(count<k && temp->next!=NULL)
+        {
+            temp=temp->next;
+            count++;
+        }
+       if(temp!=NULL || temp->next!=NULL )             
+       {
+           temp->next=temp->next->next;
+       }
+        else temp->next=NULL;
+        
+        return head;
+        
+        
+ -----------------------------------------------------------------------------
+ 
+ 
+  what we have done here first we have to count the total elements present in  linked list
+  then subtract (totalelement -kth element from end) run the loop according to that means 
+  we have to run again a loop till (totalelement -kth element from end)-1 
+  and connect present node to next node of it's next and return head 
+  
+  
+  
+  
+  Time complexity:-O(2N) (because we have made two iteration here)
+  Space complexity:-O(1)
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+                                         ---------BONUS 1:------
+                                         
+                                         
+                                         
+ 
+ 
+ As in previous approach we made Two iteration 
+ 
+ 
+ -------------------------------------------------------------------------------------
+ ListNode* removeNthFromEnd(ListNode* head, int n) {
+   ListNode * start = new ListNode();                        //declaring a start node
+        start -> next = head;                                 // intialises it's next with head
+        ListNode* fast = start;                                
+        ListNode* slow = start;     
+
+        for(int i = 1; i <= n; ++i)                             //running a loop until i get nth node from beginning 
+            fast = fast->next;
+    
+        while(fast->next != NULL)                               // once i reach there (nth from beginning) ,move both the pointer fast and slow
+        {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        
+        slow->next = slow->next->next;                     // now our slow pointer just before the desired deleted node connected it's next to the next->next
+        
+        return start->next;                               
+    }
+    
+    
+ -----------------------------------------------------------------------------------------
+ 
+ Time complexity:-O(N)
+ Space complexity:-O(1)
+                                
+                                
+                                
+        
+        
+        
+->  Take two dummy nodes, who’s next will be pointing to the head.
+      Take another node to store the head, 
+      initially,s a dummy node(start), and the next node will be pointing to the head.
+      The reason why we are using this extra dummy node is that there is an edge case. 
+      If the node is equal to the length of the LinkedList, then this slow will point to slow’s next→ next.
+      And we can say our dummy start node will be broken and will be connected to the slow next→ next.
+->  Start traversing untill the fast pointer reaches the nth node.
+->  Now start traversing by one step both of the pointers until the fast pointers reach the end.    
+->   When the traversal is done, just do the deleting part. Make slow pointers next to the next of the slow pointer to ignore/disconnect the given node.
+                                         
+ 
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+                                         
+  
+  
+  
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
