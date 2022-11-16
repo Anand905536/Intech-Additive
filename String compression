@@ -1,0 +1,44 @@
+question :-  STRING COMPRESSION
+
+ex- "aabcccccaaa"
+Ans ahould be "a2b1c5a3" 
+
+
+------------------------------------------------------------
+
+string func(string s)
+{
+	string ans="";
+	int n = s.size();
+    for (int i = 0; i < n; i++) {
+        int count = 1;
+        while (i < n - 1 && s[i] == s[i + 1]) {
+            count++;
+            i++;
+        }
+         ans+=s[i];
+         ans+=48+count;
+    }
+    return ans;
+}
+-------------------------------------------------------------
+
+time com.:-O(N)
+space com. :-O(1)
+
+
+
+DESCRIPTION:----
+
+what we have done so far here is we have used two loops first loop will pick the character
+and at a same time our variable count initialised as 1 , and second loop will run untill and unless the characters are same and (idx is not > n)
+and if we find the diffrent characters then our second loop will terminate and that string and current willl added to the ans string 
+
+this process will repeat again and again untill (idx < n)
+
+
+
+
+
+
+AND i dont know what does questions bonus 1 and 2  wannt to say 
